@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterViewController" customModule="StarWarsSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="uaG-kx-RfO" id="fPo-EM-tg2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTD-zH-uOh">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="8zi-4J-fx1"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem title="Item" systemItem="play" id="8wo-35-hLk">
+                            <connections>
+                                <action selector="play:" destination="-1" id="mio-EL-8lj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5UO-us-pwp"/>
+                        <barButtonItem title="Wiki" id="QJS-Jh-3c5">
+                            <connections>
+                                <action selector="wiki:" destination="-1" id="gTO-sv-Xmr"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaG-kx-RfO">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LTD-zH-uOh" firstAttribute="top" secondItem="uaG-kx-RfO" secondAttribute="bottom" id="038-1O-dlG"/>
+                <constraint firstAttribute="trailing" secondItem="uaG-kx-RfO" secondAttribute="trailing" id="8oe-hK-8P7"/>
+                <constraint firstItem="uaG-kx-RfO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QPX-Hj-bxu"/>
+                <constraint firstAttribute="trailing" secondItem="LTD-zH-uOh" secondAttribute="trailing" id="Xi4-dU-eIy"/>
+                <constraint firstItem="LTD-zH-uOh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aCq-lG-8N7"/>
+                <constraint firstAttribute="bottom" secondItem="LTD-zH-uOh" secondAttribute="bottom" id="moL-rO-GXY"/>
+                <constraint firstItem="uaG-kx-RfO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ud1-4A-9bb"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
