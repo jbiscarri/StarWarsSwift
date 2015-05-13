@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CharacterViewController: UIViewController {
+class CharacterViewController: UIViewController, UISplitViewControllerDelegate, UniverseTableViewControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     var character : Character = Character()
@@ -25,6 +25,8 @@ class CharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        self.edgesForExtendedLayout = UIRectEdge.None
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +34,6 @@ class CharacterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //
     
     @IBAction func play(sender: AnyObject) {
         self.player.playSoundData(self.character.soundData)
@@ -54,5 +55,18 @@ class CharacterViewController: UIViewController {
         
     }
     
-
+    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+        if (displayMode == UISplitViewControllerDisplayMode.PrimaryHidden)
+        {
+            self.navigationItem.leftBarButtonItem = svc.displayModeButtonItem();
+        }else{
+            self.navigationItem.leftBarButtonItem = nil;
+        }
+    }
+    
+    func universeTableViewController(uVC: UniverseTableViewController, character: Character) {
+        self.character = character
+        configureView()
+    }
+    
 }

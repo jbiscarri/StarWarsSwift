@@ -9,12 +9,24 @@
 
 import UIKit
 
-class UniverseTableViewController: UITableViewController {
-     let ImperialSection : Int = 0
-     let RebelSection : Int = 1
+let ImperialSection : Int = 0
+let RebelSection : Int = 1
+let notificationChangeCharacter : String = "CHARACTER_DID_CHANGE_NOTIFICATION_NAME"
+let notificationCharacterKey : String = "char"
+
+
+
+protocol UniverseTableViewControllerDelegate
+{
+    func universeTableViewController(uVC:UniverseTableViewController, character:Character)
+}
+
+class UniverseTableViewController: UITableViewController, UniverseTableViewControllerDelegate {
+    
 
     
     var _model : Universe? = nil
+    var delegate : UniverseTableViewControllerDelegate? = nil
 
     convenience init(style: UITableViewStyle, model: Universe) {
         self.init(style:style)
@@ -26,12 +38,6 @@ class UniverseTableViewController: UITableViewController {
         
         var cellNib = UINib(nibName: "UniverseCellTableViewCell", bundle: nil)
         self.tableView.registerNib(cellNib, forCellReuseIdentifier: "UniverseCell")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,13 +88,20 @@ class UniverseTableViewController: UITableViewController {
         return nil
     } 
 
-
     
-    //Protocol
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         if var char = self.getDesiredCharacter(indexPath){
             var characterVC = CharacterViewController(character: char)
-            self.navigationController?.pushViewController(characterVC, animated: true)
+            
+            if var dele = delegate{
+                dele.universeTableViewController(self, character: char)
+            }
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(notificationChangeCharacter, object: self, userInfo: [notificationCharacterKey:char])
+            
+            var def = NSUserDefaults.standardUserDefaults()
+            def.setObject([indexPath.section,indexPath.row], forKey: kLastSelectedCharacter)
+            def.synchronize()
         }
 
     }
@@ -105,6 +118,11 @@ class UniverseTableViewController: UITableViewController {
         }
         return character
     }
-
+    
+    //Protocol
+    func universeTableViewController(uVC: UniverseTableViewController, character: Character) {
+        var characterVC = CharacterViewController(character: character)
+        self.navigationController?.pushViewController(characterVC, animated: true)
+    }
     
 }

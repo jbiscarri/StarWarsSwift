@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K22-7E-Zld">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K22-7E-Zld">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -33,11 +33,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="K22-7E-Zld" secondAttribute="bottom" id="aRO-3Z-Kyz"/>
+                <constraint firstItem="K22-7E-Zld" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hmQ-6b-lbb"/>
+                <constraint firstItem="K22-7E-Zld" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lVa-p3-czv"/>
                 <constraint firstAttribute="centerY" secondItem="LKh-cX-ztV" secondAttribute="centerY" id="m2Q-uc-2hn"/>
+                <constraint firstAttribute="trailing" secondItem="K22-7E-Zld" secondAttribute="trailing" id="na7-bC-Rqw"/>
                 <constraint firstAttribute="centerX" secondItem="LKh-cX-ztV" secondAttribute="centerX" id="p8n-FV-Bhu"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="313" y="303"/>
+            <point key="canvasLocation" x="143" y="123"/>
         </view>
     </objects>
 </document>
